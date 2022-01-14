@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/DaEr/ data_structure/linked_list/linked_list.h
+stdlib.h
+-
+stdio.h
+-
+
+D:/DaEr/ data_structure/linked_list/main.c
+main.h
+D:/DaEr/ data_structure/linked_list/main.h
+time.h
+D:/DaEr/ data_structure/linked_list/time.h
+math.h
+D:/DaEr/ data_structure/linked_list/math.h
+
+D:/DaEr/ data_structure/linked_list/main.h
+linked_list.h
+D:/DaEr/ data_structure/linked_list/linked_list.h
+

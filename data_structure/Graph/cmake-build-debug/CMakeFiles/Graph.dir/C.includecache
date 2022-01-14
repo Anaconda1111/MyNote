@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Daer/data_structure/Graph/Graph.h
+stdlib.h
+D:/Daer/data_structure/Graph/stdlib.h
+stdio.h
+D:/Daer/data_structure/Graph/stdio.h
+limits.h
+D:/Daer/data_structure/Graph/limits.h
+Queue.h
+D:/Daer/data_structure/Graph/Queue.h
+
+D:/Daer/data_structure/Graph/Queue.h
+
+D:/Daer/data_structure/Graph/main.c
+Graph.h
+D:/Daer/data_structure/Graph/Graph.h
+string.h
+D:/Daer/data_structure/Graph/string.h
+
