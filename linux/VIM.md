@@ -29,7 +29,7 @@
 
 ### 2.1 从命令到文本
 
-![1644480607770](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644480607770.png)
+![1644480607770](D:\DaSan\note\noteImage\1644480607770.png)
 
 ### 2.2 从文本到命令：按ESC
 

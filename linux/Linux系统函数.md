@@ -1,6 +1,6 @@
 ## 一、open函数
 
-​	![1644653498629](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644653498629.png)
+​	![1644653498629](D:\DaSan\note\noteImage\1644653498629.png)
 
  ### 1.1 参数说明
 
@@ -21,19 +21,19 @@
 
 ### 2.1 read函数
 
-![1644655303162](file://C:/Users/xcs/AppData/Roaming/Typora/typora-user-images/1644655303162.png?lastModify=1644678609)
+![1644655303162](D:\DaSan\note\noteImage/1644655303162.png?lastModify=1644678609)
 
 参数说明：fd -- 文件描述符     buf -- 将数据读入缓冲区    count --  缓冲区大小 返回值说明：返回值是个有符号整型， -1 -- 读文件失败   0 -- 文件读完了   >0 -- 读取的字节数
 
 ### 2.2 write函数
 
-![1644655583946](file://C:/Users/xcs/AppData/Roaming/Typora/typora-user-images/1644655583946.png?lastModify=1644678609)
+![1644655583946](D:\DaSan\note\noteImage/1644655583946.png?lastModify=1644678609)
 
 参数说明： fd -- 文件描述符     buf -- 要写入的数据存放的缓冲区    count --  缓冲区大小 返回值说明：
 
 ## 三、stat函数
 
-​	![1644678812952](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644678812952.png)
+​	![1644678812952](D:\DaSan\note\noteImage\1644678812952.png)
 
 ### 3.1函数功能
 
@@ -46,11 +46,11 @@
 
 ### 3.3 结构体成员
 
-![1644679010664](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644679010664.png)
+![1644679010664](D:\DaSan\note\noteImage\1644679010664.png)
 
 ## 四、unlink函数
 
-​	![1644680668073](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644680668073.png)
+​	![1644680668073](D:\DaSan\note\noteImage\1644680668073.png)
 
 ### 4.1 函数功能
 
@@ -62,7 +62,7 @@
 
 ## 五、dup和dup2函数
 
-![1644685311867](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644685311867.png)
+![1644685311867](D:\DaSan\note\noteImage\1644685311867.png)
 
 ### 5.1 函数功能
 
@@ -70,7 +70,7 @@
 
 ## 六、fcntl函数
 
-![1644685662655](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644685662655.png)
+![1644685662655](D:\DaSan\note\noteImage\1644685662655.png)
 
 ### 6.1 函数功能
 
@@ -80,7 +80,7 @@
 
 ​	1. fd：文件描述符    2. cmd：F_GETFL或F_SETFL，前者表示读属性，后者表示要设置属性  3. 可变参数：如果是要读属性，那么这里写0就好，如果是要设置属性，首先读取属性，然后按位或上要增加的属性，再将新的属性作为第三个参数。
 
-![1644686004753](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644686004753.png)
+![1644686004753](D:\DaSan\note\noteImage\1644686004753.png)
 
 ### 6.3 返回值
 
@@ -90,13 +90,19 @@
 
 ### 7.1 getenv
 
-<img src="C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644768524137.png" alt="1644768524137" style="zoom:150%;" />	
+<img src="D:\DaSan\note\noteImage\1644768524137.png" alt="1644768524137" style="zoom:150%;" />	
 
 查看环境变量值的函数，输入为环境变量的键，如果存在则返回对应的值，否则返回NULL
 
 ### 7.2 setenv / unsetenv
 
-![1644768672259](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644768672259.png)
+![1644768672259](D:\DaSan\note\noteImage\1644768672259.png)
 
 1.  setenv：左右是新增或覆盖一个环境变量，参数overwrite必须不为0才可以覆盖，执行成功返回0，否则返回-1
 2.  unsetenv：删除对应的环境变量，成功返回0，否则返回-1，值得注意的是，如果环境变量不存在不会返回-1，只有当输入是”ABD=“之类的才会返回-1。
+
+## 八、pause函数
+
+​	<img src="D:\DaSan\note\noteImage\1645019375782.png" alt="1645019375782" style="zoom:200%;" />
+
+​	功能是暂停进程直到有信号发送到该进程，只有当信号被捕捉且信号捕捉函数执行完成后pause函数才会返回，其返回值为-1.

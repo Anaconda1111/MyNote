@@ -105,7 +105,7 @@
 
 ## 三、软件安装和卸载
 
-![1644300758197](C:\Users\xcs\AppData\Roaming\Typora\typora-user-images\1644300758197.png)
+![1644300758197](D:\DaSan\note\noteImage\1644300758197.png)
 
 ## 四、文件压缩
 
