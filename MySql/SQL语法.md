@@ -29,7 +29,7 @@
 
 ### 2.3 表中涉及的数据类型
 
-1.  数值类型：<img src="D:\DaSan\note\noteImage\1645456203699.png" alt="1645456203699" style="zoom:200%;" />
+1.  数值类型：<img src="D:\DaSan\note\noteImage\1645456203699.png" alt="1645456203699" style="zoom:250%;" />
 
     ​	在命令行中输入时一律不用区分大小写，如果需要的是无符号数，则在后面加上unsigned即可，例如 int unsigned。double和decimal都可带参数，用于描述数字长度与小数点后精确到几位。
 
