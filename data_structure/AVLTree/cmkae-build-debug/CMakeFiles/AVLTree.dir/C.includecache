@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/DaEr/ data_structure/AVLTree/AVLTree.h
+stdio.h
+D:/DaEr/ data_structure/AVLTree/stdio.h
+stdlib.h
+D:/DaEr/ data_structure/AVLTree/stdlib.h
+
+D:/DaEr/ data_structure/AVLTree/main.c
+main.h
+D:/DaEr/ data_structure/AVLTree/main.h
+
+D:/DaEr/ data_structure/AVLTree/main.h
+AVLTree.h
+D:/DaEr/ data_structure/AVLTree/AVLTree.h
+

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/DaSan/note/data_structure/PriorityQueue/PriorityQueue.c
+PriorityQueue.h
+D:/DaSan/note/data_structure/PriorityQueue/PriorityQueue.h
+
+D:/DaSan/note/data_structure/PriorityQueue/PriorityQueue.h
+limits.h
+D:/DaSan/note/data_structure/PriorityQueue/limits.h
+stdlib.h
+D:/DaSan/note/data_structure/PriorityQueue/stdlib.h
+stdio.h
+D:/DaSan/note/data_structure/PriorityQueue/stdio.h
+
+D:/DaSan/note/data_structure/PriorityQueue/main.c
+PriorityQueue.h
+D:/DaSan/note/data_structure/PriorityQueue/PriorityQueue.h
+

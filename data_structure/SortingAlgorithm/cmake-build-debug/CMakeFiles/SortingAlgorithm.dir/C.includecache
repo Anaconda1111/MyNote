@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Daer/data_structure/SortingAlgorithm/Sort.c
+Sort.h
+D:/Daer/data_structure/SortingAlgorithm/Sort.h
+stdlib.h
+D:/Daer/data_structure/SortingAlgorithm/stdlib.h
+
+D:/Daer/data_structure/SortingAlgorithm/Sort.h
+
