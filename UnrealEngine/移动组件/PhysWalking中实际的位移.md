@@ -11,3 +11,15 @@
 ​	SlideAlongSurface函数的作用是计算一段沿着不可跨越的阻碍的位移，通常是原位移delta在障碍平面上的一个投影。函数的主要实现在父类（UMovementComponent）中，子类将参数InNormal做了一些处理然后再传给父类：首先判断当前是否在地面上行走，如果是，根据碰撞法向量中Z的大小分情况处理，如果Z大于0且碰撞的结果为不可行走，那么将Z轴的分量清零(调用GetSafeNormal2D)。如果Z小于0，则判断Detal的方向与当前地面的碰撞法向量夹角大于90，如果是则说明当前运动的方向是朝着地板的方向去的，则将CurrentFloor的碰撞的Normal赋值给当前Normal，然后同样的将Z轴清零，再传递给父类。
 ​    父类的SlideAlongSurface函数，首先判断了下Hit是否为blockinghit，然后调用ComputeSlideVector计算出沿着障碍可以移动的位移SlideDelta。如果SlideDelta与Delta的夹角大于等于90则不做处理。小于90的情况下调用safemoveupdatecomponent，然后根据safemoveupdatecomponent的传出参数hit看看本次移动是否有碰撞，如果有那么说明在沿着一堵墙滑动的时候碰到了另一堵墙，此时调用TwoWallAdjust计算下新的SlideDelta，如果新的SlideDelta跟Delta夹角小于90并且不为0，则再调用SafeMoveUpdatedComponent进行位移。
 
+### 三  根运动如何作用于胶囊体位移
+
+​	根运动大多来自蒙太奇，在移动组件的PerformMovement中，如果检查到当前角色有正在播放的带根运动的资产，会调用TickCharacterPose先更新动画数据，并将动画中蒙太奇的位移提取出来，保存到移动组件的RootMotionParams成员
+![image-20241107012356025](D:\WPS\MyNote-main\noteImage\image-20241107012356025.png)
+
+然后在performmovement函数中，将根运动的deltamove换算成速度保存起来：
+
+![image-20241111011611315](D:\WPS\MyNote-main\noteImage\image-20241111011611315.png)
+
+![image-20241111011618820](D:\WPS\MyNote-main\noteImage\image-20241111011618820.png)
+
+在后续的StartNewPhysics中，计算速度这一步会先判断当前有无正在播放的根运动蒙太奇，如果有就跳过，并且再次调用ConstrainAnimRootMotionVelocity，将提取出来的根运动速度赋值给Velocity。
