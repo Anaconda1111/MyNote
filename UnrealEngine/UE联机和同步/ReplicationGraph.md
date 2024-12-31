@@ -48,7 +48,7 @@
 
 #### 三、 初始化
 
-​	ReplicationDriver的初始化由下面三个函数完成。其中比较重要的是InitForNetDriver和InitializeActorsInWorld，在RG的实现中这两个函数完成了对不同类型复制策略的标记和将当前World中所有Actor添加到RG。UE4官方示例ShooterGame中的ShooterReplication还对以上行为进行了扩展，包括创建全局节点、实现RouteAddNetworkActorToNodes函数等。
+​	ReplicationDriver的初始化由下面三个函数完成。其中比较重要的是InitForNetDriver和InitializeActorsInWorld，在RG的实现中这两个函数完成了对不同类型复制策略的标记和将当前World中所有Actor添加到RG。UE4官方示例ShooterGame中的ShooterReplication还对以上行为进行了扩展，包括创建全局节点、实现自己的RouteAddNetworkActorToNodes函数等。
 ![image-20241230235559906](D:\WPS\MyNote-main\noteImage\image-20241230235559906.png)
 
 ##### 3.1 InitForNetDriver
@@ -65,6 +65,23 @@
 ![image-20241231002234684](D:\WPS\MyNote-main\noteImage\image-20241231002234684.png)
 
 ##### 3.3  UShooterReplicationGraph::InitGlobalActorClassSettings
+
+​	ShooterGame这个示例中实现了自己的Replication，其中比较关键的是定义了自己的Class同步策略，体现在重写了InitGlobalActorClassSettings和RouteAddNetworkActorToNodes。
+
+1. 先调父类函数，然后将几种比较底层的类先添加到ClassRepNodePolicies中，ClassRepNodePolicies是ShooterReplicationGraph自己维护的一个数据结构，用来决定不同的类有怎样的同步策略，从而添加到不同的节点中
+   ![image-20241231092457403](D:\WPS\MyNote-main\noteImage\image-20241231092457403.png)
+2. 用迭代器遍历World中所有的UClass，填充AllReplicatedClasses和ClassRepNodePolicies。
+   1. 通过创建CDO判断是否需要同步，把那些需要同步的类添加到AllReplicatedClasses
+   2. 判断当前类和它父类的同步策略，同步策略不一致时才考虑把他添加到NonSpatializedChildClasses或ClassRepNodePolicies
+      ![image-20241231093159395](D:\WPS\MyNote-main\noteImage\image-20241231093159395.png)
+
+3. 填充GlobalActorReplicationInfoMap，这是个存在与基类ReplicationGraph的数据结构，记录了World中每个Actor对应的运行时复制信息和Class类的复制策略。需要注意的是，GlobalActorReplicationInfoMap和ClassRepNodePolicies它们的针对Class的Get如果找不到时都会向上去取SuperClass的数据，因此这两个数据结构中关于class的复制策略，往往都只添加了一些比较底层的父类的配置。
+      这里先显示地处理了APawn和APlayerState
+
+   ![image-20241231094120206](D:\WPS\MyNote-main\noteImage\image-20241231094120206.png)
+
+   然后遍历之前的收集到所有需要同步UClass的数据结构AllReplicatedClasses，如果它们不是APwn或者APlayerState的子类，那么为他们构造一份FClassReplicationInfo并添加到GlobalActorReplicationInfoMap
+   ![image-20241231094213504](D:\WPS\MyNote-main\noteImage\image-20241231094213504.png)
 
 #### 四、新增的Actor和连接如何被添加到RG
 
