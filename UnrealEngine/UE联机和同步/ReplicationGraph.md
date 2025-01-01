@@ -83,6 +83,10 @@
    然后遍历之前的收集到所有需要同步UClass的数据结构AllReplicatedClasses，如果它们不是APwn或者APlayerState的子类，那么为他们构造一份FClassReplicationInfo并添加到GlobalActorReplicationInfoMap
    ![image-20241231094213504](D:\WPS\MyNote-main\noteImage\image-20241231094213504.png)
 
+##### 3.4 UShooterReplicationGraph::RouteAddNetworkActorToNodes
+
+​	新Actor被构造出来时，RG通过函数RouteAddNetworkActorToNodes将他添加到对应的全局节点。ShooterReplicationGraph中运用自己维护的数据结构获取对应Class的复制策略，再添加到对应的节点中，这应该算是比较标准的处理方式。![image-20250101014530071](D:\WPS\MyNote-main\noteImage\image-20250101014530071.png)
+
 #### 四、新增的Actor和连接如何被添加到RG
 
 ​	![image-20241231012945616](D:\WPS\MyNote-main\noteImage\image-20241231012945616.png)
