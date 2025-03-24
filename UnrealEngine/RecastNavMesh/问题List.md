@@ -21,5 +21,17 @@
 
 6. 导航网格生成的相关参数有哪些，会对导航网格生成的结果产生哪些影响
 
-7. 导航的area type是什么
+7. 导航的area type是什么，他是怎么影响到poly的cost和filter的
+
+    答： area type是一种对地形的定义，包括可不可行走、行走的消耗等，通常用于区分不同区域。 首先是他的注册，每个导航区域类型对应一个UNavArea类，在他的PostLoad中会将自己注册到导航系统中：UNavigationSystemV1::RequestAreaRegistering(GetClass())。然后在注册NavigationData时，UNavigationSystemV1会把存起来的area type传给NavigationData，以初始化他的成员SupportedAreas。在这一步中，还会给每个NavAaea分配一个Id，这个id后面会存储在dtpoly的成员中，同时还会将areaid和cost作为一组数据存放到默认的过滤器中![image-20250324233906566](D:\WPS\MyNote-main\noteImage\image-20250324233906566.png)
+
+    ![image-20250324234453495](D:\WPS\MyNote-main\noteImage\image-20250324234453495.png)
+
+     后续在寻路的过程中，对于每个遍历到的poly，首先会用filter尝试把cost过高的类型过滤，如果没有被过滤那么后续还会用到这个cost来作为代价的系数(这里描述的是默认filter的实现)：
+
+    ![image-20250324234700220](D:\WPS\MyNote-main\noteImage\image-20250324234700220.png)
+
+    ![image-20250324234720357](D:\WPS\MyNote-main\noteImage\image-20250324234720357.png)![image-20250324234755206](D:\WPS\MyNote-main\noteImage\image-20250324234755206.png)
+
+8. 如何实现自己的过滤器，以实现不同AI查询出不同的路径
 
